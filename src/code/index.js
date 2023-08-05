@@ -1,5 +1,7 @@
 const OSS = require("ali-oss");
 const axios = require("axios");
+const Mime = require('mime');
+const mime = new Mime();
 const { v4: uuid } = require("uuid");
 const PADDLE_OCR_URL = process.env.PADDLE_OCR_URL;
 
@@ -19,7 +21,8 @@ exports.handler = async (event, context, callback) => {
 
   const bucket = eventJson.bucket;
   const objectName = eventJson.key;
-
+  const ext = mime.getExtension(objectName);
+  const contentType = mime.getType(objectName);
   const tenantId = "7e364800-223c-11ee-8727-784f4368419c";
   const baseUrl =
     "https://ig7ezrd8b5.execute-api.cn-north-1.amazonaws.com.cn/dev";
@@ -39,12 +42,12 @@ exports.handler = async (event, context, callback) => {
   console.time("send image to etu");
   const imageId = uuid();
   const res = await axios.get(
-    `${baseUrl}/presign-put-url?objectName=${tenantId}/${imageId}.png&contentType=image/png`
+    `${baseUrl}/presign-put-url?objectName=${tenantId}/${imageId}.${ext}&contentType=${contentType}`
   );
   const signedUrl = res.data.signedUrl;
 
   await axios.put(signedUrl, buffer.content, {
-    headers: { "Content-Type": "image/png" },
+    headers: { "Content-Type": contentType },
   });
 
   console.log("imageId: " + imageId);
@@ -75,8 +78,7 @@ exports.handler = async (event, context, callback) => {
   new Promise((resolve) => setTimeout(resolve, 1000));
   const resUrl = `https://viewers.etu.wiki/index.html?manifest=https://devcn.present.huiyouwenhua.com/manifest/${manifestId}`;
   console.log(resUrl);
-  // const resUrl = JSON.stringify(objectInfo)
-
+  
   const response = {};
   response.statusCode = 200;
   response.body = resUrl;
