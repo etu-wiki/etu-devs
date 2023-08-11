@@ -3,7 +3,6 @@ const axios = require("axios");
 const Mime = require('mime');
 const mime = new Mime();
 const { v4: uuid } = require("uuid");
-const PADDLE_OCR_URL = process.env.PADDLE_OCR_URL;
 
 // async function main() {
 exports.handler = async (event, context, callback) => {
@@ -53,22 +52,10 @@ exports.handler = async (event, context, callback) => {
   console.log("imageId: " + imageId);
   console.timeEnd("send image to etu");
 
-  console.time("orc image with paddleocr");
-
-  const ocrRes = await axios.post(
-    PADDLE_OCR_URL + "/predict/ocr_system",
-    { images: [buffer.content.toString("base64")] },
-    { headers: { "Content-Type": "application/json" } }
-  );
-
-  ocrResJson = ocrRes.data.results[0];
-  console.timeEnd("orc image with paddleocr");
-
   console.time("build manifest with ocr result");
   const manifestId = uuid();
 
-  await axios.post(`${baseUrl}/manifest/${manifestId}/image/${imageId}`, {
-    ocr: ocrResJson,
+  await axios.post(`${baseUrl}/manifest/${manifestId}/image/${imageId}/ver/3`, {
     dims: { height, width },
   });
 

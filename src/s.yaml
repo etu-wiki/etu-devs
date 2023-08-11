@@ -21,5 +21,3 @@ services:
         memorySize: 128
         runtime: nodejs14
         timeout: 60
-        environmentVariables:
-          PADDLE_OCR_URL: "{{ paddleOcrUrl }}"
