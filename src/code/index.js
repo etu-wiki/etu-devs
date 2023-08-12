@@ -10,6 +10,7 @@ exports.handler = async (event, context, callback) => {
   const eventJson = JSON.parse(event.toString());
   console.log(eventJson);
   console.time("get image from oss");
+  console.log(context.credentials)
   const client = new OSS({
     region: "oss-cn-shanghai",
     accessKeyId: context.credentials.accessKeyId,

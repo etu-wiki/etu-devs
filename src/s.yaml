@@ -10,6 +10,9 @@ services:
       service:
         name: "{{ serviceName }}"
         description: 欢迎使用易图OCR服务
+        logConfig:
+          project: fd2-prod
+          logstore: fc-log
       function:
         name: "{{ functionName }}"
         description: 调用OCR识别文字并在易图中显示
