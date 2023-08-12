@@ -1,7 +1,8 @@
 const OSS = require("ali-oss");
 const axios = require("axios");
-const Mime = require('mime');
-const mime = new Mime();
+const mime = require("mime");
+const path = require("path");
+
 const { v4: uuid } = require("uuid");
 
 // async function main() {
@@ -20,7 +21,9 @@ exports.handler = async (event, context, callback) => {
 
   const bucket = eventJson.bucket;
   const objectName = eventJson.key;
-  const ext = mime.getExtension(objectName);
+
+  const ext = path.extname(objectName);
+
   const contentType = mime.getType(objectName);
   const tenantId = "7e364800-223c-11ee-8727-784f4368419c";
   const baseUrl =
@@ -40,9 +43,8 @@ exports.handler = async (event, context, callback) => {
 
   console.time("send image to etu");
   const imageId = uuid();
-  const res = await axios.get(
-    `${baseUrl}/presign-put-url?objectName=${tenantId}/${imageId}.${ext}&contentType=${contentType}`
-  );
+  const putUrl = `${baseUrl}/presign-put-url?objectName=${tenantId}/${imageId}${ext}&contentType=${contentType}`;
+  const res = await axios.get(putUrl);
   const signedUrl = res.data.signedUrl;
 
   await axios.put(signedUrl, buffer.content, {
@@ -56,16 +58,16 @@ exports.handler = async (event, context, callback) => {
   const manifestId = uuid();
 
   await axios.post(`${baseUrl}/manifest/${manifestId}/image/${imageId}/ver/3`, {
-    dims: { height, width },
+    dims: { height, width }
   });
 
   console.log("manifestId: " + manifestId);
   console.timeEnd("build manifest with ocr result");
 
-  new Promise((resolve) => setTimeout(resolve, 1000));
+  
   const resUrl = `https://viewers.etu.wiki/index.html?manifest=https://devcn.present.huiyouwenhua.com/manifest/${manifestId}`;
   console.log(resUrl);
-  
+
   const response = {};
   response.statusCode = 200;
   response.body = resUrl;
