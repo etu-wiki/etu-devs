@@ -12,9 +12,10 @@ Name: EtuGuJiOCR
 Provider:
   - 阿里云 
 Version: 0.0.3
-Description: 以IIIF方式显现图片以及OCR识别文字
-HomePage: 项目首页地址
+Description: 使用易图以IIIF方式显现图片以及OCR识别文字
+HomePage: https://github.com/etu-wiki/etu-devs
 Tags: #标签详情
+  - 易图 
   - IIIF
   - OCR
 Category: 图文处理

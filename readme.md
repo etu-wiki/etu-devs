@@ -14,7 +14,7 @@
 
 <description>
 
-> ***将OCR识别古籍图像并以易图方式展示***
+> ***使用OCR识别古籍图像并以易图IIIF方式展示***
 
 </description>
 
