@@ -32,32 +32,13 @@
 
 ## 部署 & 体验
 
-<!-- <appcenter>
-
-- :fire: 通过 [Serverless 应用中心](https://fcnext.console.aliyun.com/applications/create?template=start-pdf2img) ，
-[![Deploy with Severless Devs](https://img.alicdn.com/imgextra/i1/O1CN01w5RFbX1v45s8TIXPz_!!6000000006118-55-tps-95-28.svg)](https://fcnext.console.aliyun.com/applications/create?template=start-pdf2img)  该应用。 
-
-</appcenter> -->
 
 - 通过 [Serverless Devs Cli](https://www.serverless-devs.com/serverless-devs/install) 进行部署：
     - [安装 Serverless Devs Cli 开发者工具](https://www.serverless-devs.com/serverless-devs/install) ，并进行[授权信息配置](https://www.serverless-devs.com/fc/config) ；
-    - 初始化项目：`s init https://github.com/etu-wiki/etu-devs.git -d etu-ocr`   
+    - 初始化项目：`s init EtuGuJiOCR -d etu-ocr`   
     - 进入项目，并进行项目部署：`cd etu-ocr && s deploy -y`
 
 </deploy>
-
-<appdetail id="flushContent">
-
-# 应用详情
-
-## 项目使用注意事项
-
-项目使用PaddleOCR进行图像识别，因为用户必须预先部署，并获得API的网址，具体方式可参见：https://github.com/duolabmeng6/paddlehub_ppocr/tree/master/deploy/PaddleOCR 或
-
-<appcenter>
-
-- :fire: 通过 [Serverless 应用中心](https://fcnext.console.aliyun.com/applications/create?template=PaddleOCR) ，
-[![Deploy with Severless Devs](https://img.alicdn.com/imgextra/i1/O1CN01w5RFbX1v45s8TIXPz_!!6000000006118-55-tps-95-28.svg)](https://fcnext.console.aliyun.com/applications/create?template=PaddleOCR)  该应用。 
 
 </appcenter>
 
@@ -67,7 +48,7 @@
 
 通过 Serverless Devs 开发者工具，您只需要几步，就可以体验 Serverless 架构，带来的降本提效的技术红利。
 
-部署完成之后，您可以使用 s 工具或者 SDK 调用函数，函数执行成功后， 就可以在 OSS 指定目标目录中得到一个 zip 包， zip 包里面是 pdf 每页截图的 jpg 文件
+部署完成之后，您可以使用 s 工具或者 SDK 调用函数，函数执行成功后， 就可以得到一个包含OCR结果的链接
 
 ```bash
 $ s invoke -e '{"bucket": "my-bucket", "key": "image.png"}'

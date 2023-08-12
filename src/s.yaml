@@ -1,24 +1,17 @@
 edition: 1.0.0          #  命令行YAML规范版本，遵循语义化版本（Semantic Versioning）规范
 name: EtuOCR            #  项目名称
-# access: "{{ access }}"  #  秘钥别名
-access: default
+access: "{{ access }}"  #  秘钥别名
 
 services:
   etu-paddle-ocr: #  服务名称
     component: fc  # 组件名称
     props: #  组件的属性值
       region: "{{ region }}"
-      # region: "cn-shanghai"
       service:
         name: "{{ serviceName }}"
-        # name: "etu-ocr-service"
         description: 欢迎使用易图OCR服务
-        logConfig:
-          project: fd2-prod
-          logstore: fc-log
       function:
         name: "{{ functionName }}"
-        # name: "etu-ocr-function"
         description: 调用OCR识别文字并在易图中显示
         codeUri: ./code
         handler: index.handler
