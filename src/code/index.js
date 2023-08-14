@@ -7,15 +7,18 @@ const { v4: uuid } = require("uuid");
 
 // async function main() {
 exports.handler = async (event, context, callback) => {
-  const eventJson = JSON.parse(event.toString());
+  const eventJson = JSON.parse(event)
   console.log(eventJson);
   console.time("get image from oss");
-  console.log(context.credentials)
+
+  const stsToken = context.credentials.securityToken === 'undefined' ? undefined : context.credentials.securityToken;
   const client = new OSS({
-    region: "oss-cn-shanghai",
+    region: `oss-${context.region}`,
     accessKeyId: context.credentials.accessKeyId,
     accessKeySecret: context.credentials.accessKeySecret,
-    stsToken: context.credentials.securityToken,
+    stsToken,
+    // 走内网，省钱
+    // internal: process.env.NODE_ENV === "development" ? false : true,
   });
 
   const bucket = eventJson.bucket;
