@@ -16,8 +16,6 @@ exports.handler = async (event, context, callback) => {
     accessKeyId: context.credentials.accessKeyId,
     accessKeySecret: context.credentials.accessKeySecret,
     stsToken: context.credentials.securityToken,
-    // 走内网，省钱
-    internal: process.env.NODE_ENV === "development" ? false : true,
   });
 
   const bucket = eventJson.bucket;
