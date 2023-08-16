@@ -50,9 +50,9 @@
 
 部署完成之后，打开访问地址，您就可以用拖放方式对古籍进行OCR。
 
-<img src='image/i1.png' />
+[示图一](https://raw.githubusercontent.com/etu-wiki/etu-devs/main/image/i1.png)
 
-<img src='image/i2.png' />
+[示图二](https://raw.githubusercontent.com/etu-wiki/etu-devs/main/image/i2.png)
 
 </appdetail>
 
