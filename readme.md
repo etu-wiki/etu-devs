@@ -48,18 +48,11 @@
 
 通过 Serverless Devs 开发者工具，您只需要几步，就可以体验 Serverless 架构，带来的降本提效的技术红利。
 
-部署完成之后，您可以使用 s 工具或者 SDK 调用函数，函数执行成功后， 就可以得到一个包含OCR结果的链接
+部署完成之后，打开访问地址，您就可以用拖放方式对古籍进行OCR。
 
-```bash
-$ s invoke -e '{"bucket": "my-bucket", "key": "image.png"}'
-```
+<img src='image/i1.png' />
 
-其中：
-
-- **bucket**: 必需，图像文件所在的 bucket 名字
-
-- **key**: 必需，图像文件所在的 bucket 中的 object key
-
+<img src='image/i2.png' />
 
 </appdetail>
 

@@ -147,3 +147,5 @@ dist
 # End of https://www.toptal.com/developers/gitignore/api/yarn,node,npm
 n
 .DS_Store
+
+etu-devs-frontend
