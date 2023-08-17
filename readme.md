@@ -1,17 +1,5 @@
 # etu-evs 帮助文档
 
-<!-- <p align="center" class="flex justify-center">
-    <a href="https://www.serverless-devs.com" class="ml-1">
-    <img src="http://editor.devsapp.cn/icon?package=start-pdf2img&type=packageType">
-  </a>
-  <a href="http://www.devsapp.cn/details.html?name=start-pdf2img" class="ml-1">
-    <img src="http://editor.devsapp.cn/icon?package=start-pdf2img&type=packageVersion">
-  </a>
-  <a href="http://www.devsapp.cn/details.html?name=start-pdf2img" class="ml-1">
-    <img src="http://editor.devsapp.cn/icon?package=start-pdf2img&type=packageDownload">
-  </a>
-</p> -->
-
 <description>
 
 > ***使用OCR识别古籍图像并以易图IIIF方式展示***

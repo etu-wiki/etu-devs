@@ -9,7 +9,7 @@ def id():
     context = bottle.request.environ.get('fc.context')
     return context.account_id
 
-    
+
 @bottle.route('/', method='GET')
 def index():
     return bottle.template('./index.html')
