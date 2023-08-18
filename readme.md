@@ -38,9 +38,9 @@
 
 部署完成之后，打开访问地址，您就可以用拖放方式对古籍进行OCR。
 
-<img src='https://raw.githubusercontent.com/etu-wiki/etu-devs/main/image/i1.png' />
+<img src='https://viewers.etu.wiki/image/i1.png' />
 
-<img src='https://raw.githubusercontent.com/etu-wiki/etu-devs/main/image/i2.png' />
+<img src='https://viewers.etu.wiki/image/i2.png' />
 
 </appdetail>
 
